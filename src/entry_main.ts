@@ -9,6 +9,7 @@ const site_b: HTMLElement = document.querySelector("#site-b")!;
 initFactorialUi(site_a);
 initFibonacciUi(site_b);
 
+
 site_a.onclick = () => {
   UIkit.notification("Going to factorials in 3s...", { pos: "bottom-right" });
   setTimeout(() => {
