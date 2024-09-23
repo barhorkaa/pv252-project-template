@@ -3,9 +3,9 @@ import { initMenu } from "./menu.ts";
 import { initFactorialUi } from "./factorial.ts";
 import { initFibonacciUi } from "./fibonacci.ts";
 
-initMenu(document.querySelector(".main-menu")!, "menu-home");
-const site_a: HTMLElement = document.querySelector("#site-a")!;
-const site_b: HTMLElement = document.querySelector("#site-b")!;
+initMenu(document.querySelector(".main-menu")! as HTMLElement, "menu-home");
+const site_a: HTMLElement = document.querySelector("#site-a")! as HTMLElement;
+const site_b: HTMLElement = document.querySelector("#site-b")! as HTMLElement;
 initFactorialUi(site_a);
 initFibonacciUi(site_b);
 
