@@ -13,3 +13,19 @@ test("find-fibonacci", async ({ page }) => {
 
 // YouTube Tests
 
+test("open-youtube", async ({ page }) => {
+  await page.goto("https://www.youtube.com/");
+  await expect(page).toHaveTitle(/YouTube/)
+});
+
+test('should search for a video', async ({ page }) => {
+  await page.goto('https://www.youtube.com/');
+
+  await page.fill('input#search', 'never gonna give you up');
+  await page.press('input#search', 'Enter');
+
+  await page.waitForSelector('ytd-video-renderer');
+
+  const videoResults = await page.$$('ytd-video-renderer');
+  expect(videoResults.length).toBeGreaterThan(0);
+});
