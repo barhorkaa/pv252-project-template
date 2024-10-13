@@ -37,3 +37,16 @@ test("find-fi-programmes", async ({ page }) => {
 
   await expect(page).toHaveTitle(/Studijní programy: Fakulta informatiky/)
 });
+
+test("find-fi-dean", async ({ page }) => {
+  await page.goto("https://www.muni.cz/");
+
+  await page.getByPlaceholder('Hledej').fill("fi dekan")
+  await page.keyboard.press("Enter")
+
+  await expect(page.locator('#ajax-form-containerresults > .row-main > .grid')).toContainText("Vedení Fakulty informatiky")
+
+  await page.getByRole('link', { name: /Vedení Fakulty informatiky/ }).click()
+  await page.getByText(/^děkan/).click()
+  await expect(page.getByText('děkan Fakulty informatiky')).toBeVisible()
+});
