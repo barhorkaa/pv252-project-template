@@ -18,14 +18,11 @@ test("open-youtube", async ({ page }) => {
   await expect(page).toHaveTitle(/YouTube/)
 });
 
-test('should search for a video', async ({ page }) => {
-  await page.goto('https://www.youtube.com/');
+test("change-language", async ({ page }) => {
+  await page.goto("https://www.muni.cz/");
 
-  await page.fill('input#search', 'never gonna give you up');
-  await page.press('input#search', 'Enter');
+  await page.getByRole('navigation', { name: 'Výběr jazyka' }).click()
+  await page.getByRole('link', { name: 'English' }).click()
 
-  await page.waitForSelector('ytd-video-renderer');
-
-  const videoResults = await page.$$('ytd-video-renderer');
-  expect(videoResults.length).toBeGreaterThan(0);
+  await expect(page).toHaveTitle(/Masaryk University/)
 });
