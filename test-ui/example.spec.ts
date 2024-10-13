@@ -50,3 +50,18 @@ test("find-fi-dean", async ({ page }) => {
   await page.getByText(/^děkan/).click()
   await expect(page.getByText('děkan Fakulty informatiky')).toBeVisible()
 });
+
+test("shop-munishop", async ({ page }) => {
+  await page.goto("https://munishop.muni.cz")
+
+  await page.getByRole('link', { name: 'Reklamní předměty Jdu' }).getByRole('button').click()
+  await page.getByLabel('Katalog produktů').getByRole('link', { name: 'Kancelářské a školní potřeby' }).click()
+
+  await expect(page.getByText(/Přívěšek hrášky/)).toBeVisible()
+  await page.getByRole('link', { name: /Přívěšek hrášky/ }).click()
+
+  await page.getByRole('button', { name: 'Koupit' }).first().click()
+  await page.getByRole('button', { name: 'Košík' }).click()
+
+  await expect(page.getByRole('row', { name: 'Celkem 95,00 Kč' }).locator('td')).toContainText(/95,00/)
+});
