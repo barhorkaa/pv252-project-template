@@ -11,7 +11,7 @@ test("find-fibonacci", async ({ page }) => {
   await expect(page.getByText("Factorial value ")).toBeVisible()
 });
 
-// YouTube Tests
+// MUNI Tests
 
 test("open-muni", async ({ page }) => {
   await page.goto("https://www.muni.cz/");
