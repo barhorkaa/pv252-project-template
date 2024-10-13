@@ -13,9 +13,9 @@ test("find-fibonacci", async ({ page }) => {
 
 // YouTube Tests
 
-test("open-youtube", async ({ page }) => {
-  await page.goto("https://www.youtube.com/");
-  await expect(page).toHaveTitle(/YouTube/)
+test("open-muni", async ({ page }) => {
+  await page.goto("https://www.muni.cz/");
+  await expect(page).toHaveTitle(/Masarykova univerzita/)
 });
 
 test("change-language", async ({ page }) => {
