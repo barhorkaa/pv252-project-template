@@ -26,3 +26,14 @@ test("change-language", async ({ page }) => {
 
   await expect(page).toHaveTitle(/Masaryk University/)
 });
+
+test("find-fi-programmes", async ({ page }) => {
+  await page.goto("https://www.muni.cz/");
+  await page.getByRole('link', { name: /Chci studovat/ }).first().click()
+
+  await page.locator('#menu-main').getByRole('link', { name: 'Bakalářské a magisterské' }).click()
+  await page.getByRole('link', { name: /Programy podle fakult/ }).click()
+  await page.getByRole('link', { name: 'Fakulta informatiky' }).click()
+
+  await expect(page).toHaveTitle(/Studijní programy: Fakulta informatiky/)
+});
